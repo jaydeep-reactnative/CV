@@ -1,108 +1,51 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2021 Jitin Nair
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-
 %----------------------------------------------------------------------------------------
 %	DOCUMENT DEFINITION
 %----------------------------------------------------------------------------------------
 
-% article class because we want to fully customize the page and not use a cv template
 \documentclass[a4paper,12pt]{article}
-
-%----------------------------------------------------------------------------------------
-%	FONT
-%----------------------------------------------------------------------------------------
-
-% % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
 
 %----------------------------------------------------------------------------------------
 %	PACKAGES
 %----------------------------------------------------------------------------------------
-\usepackage{url}
-\usepackage{parskip} 	
 
-%other packages for formatting
+\usepackage{url}
+\usepackage{parskip}
+
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[scale=0.9]{geometry}
 
-%tabularx environment
 \usepackage{tabularx}
-
-%for lists within experience section
 \usepackage{enumitem}
 
-% centered version of 'X' col. type
-\newcolumntype{C}{>{\centering\arraybackslash}X} 
+\newcolumntype{C}{>{\centering\arraybackslash}X}
 
-%to prevent spillover of tabular into next pages
 \usepackage{supertabular}
-\usepackage{tabularx}
 \newlength{\fullcollw}
 \setlength{\fullcollw}{0.47\textwidth}
 
-%custom \section
-\usepackage{titlesec}				
+\usepackage{titlesec}
 \usepackage{multicol}
 \usepackage{multirow}
 
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{10pt}{10pt}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
-
-%Setup hyperref package, and colours for links
 \usepackage[unicode, draft=false]{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-\addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
 
-%for social icons
 \usepackage{fontawesome5}
 
-%debug page outer frames
-%\usepackage{showframe}
+%----------------------------------------------------------------------------------------
+%	JOB LISTING ENVIRONMENTS
+%----------------------------------------------------------------------------------------
 
-
-% job listing environments
 \newenvironment{jobshort}[2]
     {
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \textbf{#1} & \hfill & #2 \\[3.75pt]
     \end{tabularx}
     }
     {
@@ -111,104 +54,150 @@
 \newenvironment{joblong}[2]
     {
     \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \textbf{#1} & \hfill & #2 \\[3.75pt]
     \end{tabularx}
     \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    \begin{itemize}[nosep,after=\strut,leftmargin=1em,itemsep=3pt,label=--]
     }
     {
     \end{itemize}
-    \end{minipage}    
+    \end{minipage}
     }
 
-
+% Displays the company and role on separate lines while retaining the template's
+% original joblong layout.
+\newcommand{\jobheading}[2]{%
+    \begin{tabular}[t]{@{}l@{}}
+    #1\\[-1pt]
+    \normalfont\textit{#2}
+    \end{tabular}%
+}
 
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
 %----------------------------------------------------------------------------------------
+
 \begin{document}
 
-% non-numbered pages
-\pagestyle{empty} 
+\pagestyle{empty}
 
 %----------------------------------------------------------------------------------------
 %	TITLE
 %----------------------------------------------------------------------------------------
 
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
-
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Your Name} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\Huge{Jaydeep Patel} \\[7.5pt]
+\href{https://linkedin.com/in/jaydeep-reactnative}
+{\raisebox{-0.05\height}\faLinkedin\ linkedin.com/in/jaydeep-reactnative}
+\ $|$ \
+\href{https://github.com/jaydeep-reactnative}
+{\raisebox{-0.05\height}\faGithub\ github.com/jaydeep-reactnative}
+\ $|$ \
+\href{https://maps.app.goo.gl/799Fo5EQh1tyS8936}
+{\raisebox{-0.05\height}\faMapMarker\ Ontario, Canada}
+\ $|$ \
+\href{mailto:jaydeep.reactnative@gmail.com}
+{\raisebox{-0.05\height}\faEnvelope\ jaydeep.reactnative@gmail.com}
+\ $|$ \
+\href{tel:5198716036}
+{\raisebox{-0.05\height}\faMobile\ 519-871-6036} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-% EXPERIENCE SECTIONS
+%	SUMMARY
 %----------------------------------------------------------------------------------------
 
-%Interests/ Keywords/ Summary
 \section{Summary}
-This CV can also be automatically compiled and published using GitHub Actions. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
-
-%Experience
-\section{Work Experience}
-
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
-
-
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
-\end{joblong}
-  
-%Projects
-\section{Projects}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-\section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
-
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
-
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	PUBLICATIONS
-%----------------------------------------------------------------------------------------
-\section{Publications}
-\begin{refsection}[citations.bib]
-\nocite{*}
-\printbibliography[heading=none]
-\end{refsection}
+Experienced React Native and React.js developer with 9 years of experience creating high-quality web and mobile applications. I possess a strong understanding of the React ecosystem, including Redux, Saga, MobX, and other related tools. Skilled in developing complex UIs with clean, maintainable code, and experienced in integrating APIs and third-party libraries. Strong knowledge of Redux, Saga, TypeScript, JavaScript, HTML, CSS, and related web technologies, and ability to work effectively in a collaborative team environment. Proven ability to deliver projects on time and within budget, with a keen eye for detail and a passion for staying up-to-date with the latest industry trends and best practices.
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
+
 \section{Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+\textbf{Languages} & React Native, TypeScript, React.js, JavaScript (ES6+), HTML5, CSS3 \\[3pt]
+\textbf{State Management} & Redux, Redux Toolkit, MobX, Saga, Zustand, Context API, GraphQL \\[3pt]
+\textbf{UI Libraries} & Expo, Ignite, Material UI, Bootstrap, Native-base, Tailwind CSS, AG Grid \\[3pt]
+\textbf{Testing \& Debugging} & Jest, Xcode, Android Studio \\[3pt]
+\textbf{CI/CD} & Git, Jenkins, Fastlane, Azure \\[3pt]
+\textbf{Development Tools} & VS Code, Jira, Trello, Confluence, Slack, Zeplin \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Work Experience}
+
+\begin{joblong}
+{\jobheading{BMO, Toronto, CA}{Mobile Developer}}
+{JUL 2025 -- Current}
+\item Worked on the BMO Business Mobile Application using React Native, Redux, and Redux Saga.
+\item Implemented new features, including the ability to generate void cheques for business users.
+\item Identified and resolved security and performance-related issues, improving overall application stability and efficiency.
+\item Led the upgrade of the React Native version, along with associated libraries and SDKs, ensuring compatibility, improved performance, and adherence to best practices.
+\end{joblong}
+
+\begin{joblong}
+{\jobheading{Virtusa, Toronto, CA}{Lead Software Engineer}}
+{JUL 2025 -- Current}
+\item Working with clients of Virtusa to develop mobile applications using React-native and related technologies.
+\end{joblong}
+
+\begin{joblong}
+{\jobheading{myBlueprint, Toronto, CA}{Mobile Developer}}
+{JUL 2023 -- JUN 2025}
+\item Work on EdTech mobile application called SpacesEDU using React Native technology along with Redux, Saga and TypeScript languages.
+\item Collaborated with a small team to plan and deliver new features for ios and android mobile applications.
+\item Wrote and maintained test cases using Jest to ensure code quality and reliability.
+\item Fixed various development and production-level bugs to improve app stability and performance.
+\item Acted as interim team lead, managing task planning and distribution among team members.
+\item Conducted and facilitated daily stand-ups and retrospective meetings to streamline team processes.
+\item Managed iOS and Android app production deployments using App Center, ensuring smooth and timely releases.
+\end{joblong}
+
+\begin{joblong}
+{\jobheading{Swan Softweb Solutions, Gujarat, IN}{Senior Software Engineer}}
+{APR 2022 -- JUN 2023}
+\item Led the development of scalable and high-performance mobile applications using React \& React Native, enhancing user experience across iOS and Android platforms.
+\item Implement and use expo framework on various applications along with other libraries and services like deep linking and push notifications.
+\item Mentored junior developers, guiding React Native development, code reviews, and debugging techniques.
+\item Collaborated with cross-functional teams, including UX/UI designers and backend engineers, to deliver seamless and integrated user experiences.
+\item Optimized app performance by implementing efficient state management strategies, including Redux and Context API.
+\end{joblong}
+
+\begin{joblong}
+{\jobheading{Maybank, Malaysia}{Front End Developer}}
+{APR 2020 -- MAR 2022}
+\item Developed the M2UBiz mobile application utilizing React Native, successfully delivering a top-notch product with seamless performance and excellent user experience.
+\item As a member of the development team, played an integral role in the successful creation and implementation of the Maybank2U web application using React.js.
+\item Demonstrated proficiency in building a user-friendly interface, ensuring the web application was both dynamic and responsive, and prioritizing a high level of usability for end-users.
+\item Thoroughly reviewed project specifications and utilized advanced technical knowledge to design innovative and highly effective solutions that met or surpassed the performance expectations, resulting in the successful completion of the project.
+\end{joblong}
+
+\begin{joblong}
+{\jobheading{Simform Solutions, Gujarat, IN}{Software Engineer}}
+{JAN 2016 -- MAR 2020}
+\item Developed 3+ fully functional mobile applications using React-native.
+\item Developed 2 fully functional web applications using React.js.
+\item Worked on the innovation team, to design and develop new features for products including user on-boarding, menu setup, item tracking, Item substitution, user management, and support request.
+\item Developed end-to-end application using expo framework along with ignite and native-base.
+\item Integrated payment gateway using Stripe and was involved in multilingual mobile and website development.
+\item Worked on VR application in react-native using redux-saga storage, and in dating application using GraphQL.
+\item Coordinating with team members for system design, integration, application maintenance, etc.
+\item Cooperating with other teams across the organization for efficient work progress.
+\item Following the best practices for project support and documentation as set by peers.
+\end{joblong}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+AUG 2013 -- MAY 2016 & Master of Computer Applications at \textbf{Nirma University} \\[3pt]
+JUL 2010 -- MAY 2013 & Bachelor of Computer Applications at \textbf{Sardar Patel University} \\
 \end{tabularx}
 
 \vfill
